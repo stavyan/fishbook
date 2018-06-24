@@ -2,5 +2,8 @@
 
 {% block content %}
     {{ super() }}
-{{ data.age }}
+    {{ data.age }}
+    {% with messages = get_flashed_messages() %}
+        {{ messages }}
+    {% endwith %}
 {% endblock %}

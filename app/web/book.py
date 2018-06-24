@@ -1,5 +1,5 @@
 # coding: utf-8
-from flask import jsonify, request, render_template
+from flask import jsonify, request, render_template, flash
 import json
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
@@ -43,10 +43,19 @@ def search():
 
         # return jsonify(result)  # return json.dumps(result), 200, {'content-type': 'application/json'}
         books.fill(yushu_book, q)
-        return json.dumps(books, default=lambda o: o.__dict__)
-        # return jsonify(books.__dict__)
+        # return json.dumps(books, default=lambda o: o.__dict__)
     else:
-        return jsonify(form.errors)
+        flash('搜索的关键字不符合要求，请重新输入关键字！')
+
+    return render_template('search_result.html', books=books)
+
+
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    yushu_book = YuShuBook()
+    yushu_book.search_by_isbn(isbn)
+    book = BookViewModel(yushu_book.books[0])
+    return render_template('book_detail.html', book=book, wishes=[], gifts=[])
 
 
 @web.route('/test')
@@ -58,6 +67,8 @@ def test():
     r1 = {
 
     }
+    flash('hello, qiyue!', category='error')
+    flash('hello, stav!', category='warning')
     # 模版 html
     return render_template('test.html', data=r, data1=r1)
 
