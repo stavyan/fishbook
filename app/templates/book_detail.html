@@ -9,20 +9,20 @@
     {{ super() }}
     <div class="row book-container">
         <div class="col-md-2">
-            <img class="book-img" src="{{ book.image }}"/>
+            <img class="book-img" src="{{ book.image[0] }}"/>
         </div>
         <div style="margin-left: 30px;" class="col-md-5 flex-vertical">
             <div>
-                <h4>{{ book.title }}</h4>
+                <h4>{{ book.title[0] }}</h4>
             </div>
             <div class="description-font-margin">
                 <div>
                     <span>作者:</span>
-                    <span>{{ book.author }}</span>
+                    <span>{{ book.author[0] }}</span>
                 </div>
                 <div>
                     <span>出版社:</span>
-                    <span>{{ book.publisher }}</span>
+                    <span>{{ book.publisher[0] }}</span>
                 </div>
                 <div>
                     <span>出版年：</span>
@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <span>定价：</span>
-                    <span>{{ book.price }}</span>
+                    <span>{{ book.price[0] }}</span>
                 </div>
                 <div>
                     <span>精装：</span>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <span>ISBN：</span>
-                    <span id="isbn">{{ book.isbn }}</span>
+                    <span id="isbn">{{ book.isbn[0] }}</span>
                 </div>
                 {% if wishes.total or gifts.total %}
                     <div class="color-count">
@@ -82,7 +82,7 @@
     </div>
     <div style="margin-top:15px;" class="row">
         <div class="col-md-11">
-            <p class="description-font">{{ book.summary }}</p>
+            <p class="description-font">{{ book.summary[0] }}</p>
         </div>
     </div>
     {% if gifts.total!= 0 and not has_in_gifts %}
@@ -96,7 +96,7 @@
                     {{ gift.user_name }}
                 </div>
                 <div class="col-md-2 description-font">
-                    上传于{{ gift.time }}
+                    上传于{{ gift.time[0] }}
                 </div>
                 <div class="col-md-2">
                     <a class="btn-normal"
@@ -132,7 +132,7 @@
                 aria-label="Close"></button>
         <div>
             <h5 class="diag-title">
-                您确定拥有《{{ book.title }}》这本书吗？</h5>
+                您确定拥有《{{ book.title[0] }}》这本书吗？</h5>
             <p id="modal1Desc" class="description-font">
                 如果您不想赠送此书，或者没有这本书，请不要随意发布虚假信息。谢谢你的支持和理解。
             </p>
