@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
 from sqlalchemy import Column, Integer, SmallInteger
 
 from contextlib import contextmanager
@@ -18,6 +18,13 @@ class SQLAlchemy(_SQLAlchemy):
 
 
 db = SQLAlchemy()
+
+
+class Query(BaseQuery):
+    def filter_by(self, **kwargs):
+        if 'status' not in kwargs.keys():
+            kwargs['status'] = 1
+        super(Query, self).filter_by(**kwargs)
 
 
 class Base(db.Model):

@@ -5,7 +5,6 @@ from app.models.base import db
 from app.models.gift import Gift
 from . import web
 
-__author__ = '七月'
 
 
 @web.route('/my/wish')

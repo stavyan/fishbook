@@ -3,9 +3,7 @@ from app.forms.auth import RegisterForm, LoginForm
 from app.models.base import db
 from app.models.user import User
 from . import web
-from flask_login import login_user
-
-__author__ = '七月'
+from flask_login import login_user, current_user, logout_user
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -59,4 +57,5 @@ def change_password():
 
 @web.route('/logout')
 def logout():
-    pass
+    logout_user()
+    return redirect(url_for('web.index'))

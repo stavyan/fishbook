@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
     {{ super() }}
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 {% block content %}
     <div class="row">
@@ -11,15 +11,15 @@
     <div id="books" class="row">
         {% for book in recent %}
             <div class="col-md-4 book-container">
-                <a href="{{ url_for('web.book_detail', isbn=book.isbn) }}" class="">
+                <a href="{{ url_for('web.book_detail', isbn=book.isbn[0]) }}" class="">
                     <div class="col-md-4 no-padding">
-                        <img class="book-img cssshadow" src="{{ book.image }}">
+                        <img class="book-img cssshadow" src="{{ book.image[0] }}">
                     </div>
                     <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
-                        <span class="title">{{ book.title }}</span>
-                        <div class="description-font"><span>作者：</span><span>{{ book.author }}</span>
+                        <span class="title">{{ book.title[0] }}</span>
+                        <div class="description-font"><span>作者：</span><span>{{ book.author[0] }}</span>
                         </div>
-                        <span class="summary description-font">{{ book.summary }}</span>
+                        <span class="summary description-font">{{ book.summary[0] }}</span>
                     </div>
                 </a>
             </div>
