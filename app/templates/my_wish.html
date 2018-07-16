@@ -12,30 +12,30 @@
     </div>
     {% for wish in wishes %}
         <div class="row">
-            <a href="{{ url_for('web.book_detail', isbn=wish.book.isbn) }}" class="">
+            <a href="{{ url_for('web.book_detail', isbn=wish.book.isbn[0]) }}" class="">
                 <div style="margin-bottom:30px;" class="col-md-9 col-padding">
                     <div class="col-md-2">
-                        <img class="book-img-small shadow" src="{{ wish.book.image }}">
+                        <img class="book-img-small shadow" src="{{ wish.book.image[0] }}">
                     </div>
                     <div style="margin-top:6px;" class="col-md-6 flex-vertical">
                             <span id="title"
-                                  class="book-middle-title">{{ wish.book.title }}</span>
+                                  class="book-middle-title">{{ wish.book.title[0] }}</span>
                         <div style="margin-top:6px;"
                              class="flex-vertical description-font">
-                            <span id="author">{{ wish.book.author }}</span>
-                            <span id="publisher">{{ wish.book.publisher }}</span>
-                            <span id="price">{{ wish.book.price }}</span>
-                            <span id="isbn">{{ wish.book.isbn }}</span>
+                            <span id="author">{{ wish.book.author[0] }}</span>
+                            <span id="publisher">{{ wish.book.publisher[0] }}</span>
+                            <span id="price">{{ wish.book.price[0] }}</span>
+                            <span id="isbn">{{ wish.book.isbn[0] }}</span>
                         </div>
                         <a class="link-normal"
-                           href="{{ url_for('web.redraw_from_wish', isbn=wish.book.isbn) }}">
+                           href="{{ url_for('web.redraw_from_wish', isbn=wish.book.isbn[0]) }}">
                             撤销
                         </a>
                     </div>
                     <div class="col-md-3 flex-vertical">
-                        {% if wish.wishes_count %}
-                            <a href="{{ url_for('web.book_detail', isbn=wish.book.isbn) }}">
-                                <span class="bg-info">{{ wish.wishes_count }}人赠送</span>
+                        {% if wish.wishes_count[0] %}
+                            <a href="{{ url_for('web.book_detail', isbn=wish.book.isbn[0]) }}">
+                                <span class="bg-info">{{ wish.wishes_count[0] }}人赠送</span>
                             </a>
                         {% endif %}
                     </div>

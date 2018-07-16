@@ -4,7 +4,6 @@ from app.models.base import Base, db
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
 from sqlalchemy.orm import relationship
 
-from app.models.wish import Wish
 from app.spider.yushu_book import YuShuBook
 
 
@@ -16,6 +15,9 @@ class Gift(Base):
     # book = relationship('Book')
     # bid = Column(Integer, ForeignKey('book.id'))
     launched = Column(Boolean, default=False)
+
+    def is_yourself_gift(self, uid):
+        return True if self.uid == uid else False
 
     @classmethod
     def get_user_gifts(cls, uid):
@@ -49,3 +51,6 @@ class Gift(Base):
             Gift.create_time)).limit(
             current_app.config['RECENT_BOOK_COUNT']).distinct().all()
         return recent_gift
+
+
+from app.models.wish import Wish
