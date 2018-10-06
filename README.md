@@ -1,11 +1,8 @@
-# Python+Flask 制作公益赠书平台-鱼书
+# Python+Flask+Mysql 制作公益赠书平台-鱼书
 
+## 预览
 
->  🚀 暂时只能用于本地学习使用,未使用uWSGI待后面上线再更新补充~~
-
-> 🚀 部署上线参考flask-movie  https://github.com/guaosi/flask-movie
-
-> 🚀 留坑，过段时间下个分支将会补充API部分和小程序
+[预览地址](http://132.232.19.246:5000)
 
 ## 实现的功能
 
@@ -77,7 +74,7 @@ SQLALCHEMY_COMMIT_TEARDOWN = True
 # 设置key，比如 SECRET_KEY='guaosi'
 SECRET_KEY=''
 # Email 配置
-MAIL_SERVER = 'smtp.exmail.qq.com'
+MAIL_SERVER = ''
 MAIL_PORT = 465
 MAIL_USE_SSL = True
 MAIL_USE_TSL = False
