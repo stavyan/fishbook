@@ -1,4 +1,4 @@
-# Python+Flask+Mysql 制作公益赠书平台-鱼书
+# Python+Flask+Mysql 开发赠送书籍平台
 
 ## 预览
 
